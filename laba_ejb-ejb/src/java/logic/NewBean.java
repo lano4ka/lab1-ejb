@@ -8,6 +8,8 @@ package logic;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
@@ -20,12 +22,15 @@ import javax.inject.Named;
  * @author пк
  */
 @ConversationScoped
-@Named()
+@Named
 @Stateful
 public class NewBean implements Serializable, NewBeanLocal{
     @Inject
     private Conversation conversation;
+    
     private List<String> answers;
+    
+    private static final Logger logger = Logger.getLogger(NewBean.class.getName());
 
     public void startConversation()
     {
@@ -49,6 +54,7 @@ public class NewBean implements Serializable, NewBeanLocal{
 
     @Override
     public List<String> getAllAnswers() {
+        logger.log(Level.INFO, "We are listing answers!!!" + answers.size());
         stopConversation();
         return answers;
     }
