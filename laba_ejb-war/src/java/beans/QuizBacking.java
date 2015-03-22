@@ -7,16 +7,20 @@ package beans;
 
 import java.util.List;
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import logic.NewBeanLocal;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author пк
  */
-
+@Named("quizBacking")
+@RequestScoped
 public class QuizBacking {
     
-    @EJB
+    @Inject 
     private NewBeanLocal conversation;
     
     private String answer;

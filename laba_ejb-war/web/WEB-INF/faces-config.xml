@@ -12,9 +12,9 @@
         <managed-bean-class>beans.ProceduraBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
 </managed-bean>
-<managed-bean>
+<!--<managed-bean>
         <managed-bean-name>quizBacking</managed-bean-name>
         <managed-bean-class>beans.QuizBacking</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
-</managed-bean>
+</managed-bean> -->
 </faces-config>
