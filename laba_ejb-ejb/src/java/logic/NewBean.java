@@ -15,6 +15,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -29,7 +30,13 @@ public class NewBean implements Serializable, NewBeanLocal{
     @Inject
     private Conversation conversation;
     
+    @EJB
+    private NewSessionBean singleton;
+    
     private List<String> answers;
+    
+    @Inject
+    private Event<EventClass> events;
     
     private static final Logger logger = Logger.getLogger(NewBean.class.getName());
     @PostConstruct
@@ -52,6 +59,8 @@ public class NewBean implements Serializable, NewBeanLocal{
             answers = new LinkedList<>();
         }
         answers.add(answer);
+ 
+        events.fire(new EventClass(singleton.getCount()));
         System.out.println("added answer " + answer);
     }
 

@@ -40,4 +40,8 @@ public class QuizBacking {
     public String endQuiz() {
         return "/page3.xhtml";
     }
+    
+     public String showCountAnswers() {
+        return "/countAnswers.xhtml";
+    }
 }
