@@ -5,6 +5,7 @@
  */
 package logic;
 
+import java.io.Serializable;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
@@ -12,13 +13,13 @@ import javax.interceptor.InvocationContext;
  *
  * @author пк
  */
-public class InterceptorClass {
+public class InterceptorClass implements Serializable{
 
     @AroundInvoke
     Object intercept(InvocationContext ctx) throws Exception {
         Object[] parameters = ctx.getParameters();
         String param = (String) parameters[0];
-        param = param + "Smirnova";
+        param = param + " by Smirnova";
         parameters[0] = param;
         ctx.setParameters(parameters);
         try {

@@ -24,5 +24,10 @@ public List<Procedura> getAllProcedures()
 {
     return dao.selectAll();
 }
+
+public String goToQuizz()
+{
+    return "/page2.xhtml";
+}
     
 }

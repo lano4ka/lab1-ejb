@@ -18,6 +18,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.interceptor.Interceptors;
 
 /**
  *
@@ -53,7 +54,7 @@ public class NewBean implements Serializable, NewBeanLocal{
             conversation.end();
     }
     
-    //Override
+   @Interceptors (InterceptorClass.class)
     public void addAnswer(String answer) {
         if(answers == null) {
             answers = new LinkedList<>();
@@ -66,9 +67,9 @@ public class NewBean implements Serializable, NewBeanLocal{
 
     //@Override
     public List<String> getAllAnswers() {
-        System.out.println("We are listing answers!!!" + answers.size());
+        //System.out.println("We are listing answers!!!" + answers.size());
         stopConversation();
-        return answers;
+        return answers!=null?answers:new LinkedList<String>();
         
     }
     

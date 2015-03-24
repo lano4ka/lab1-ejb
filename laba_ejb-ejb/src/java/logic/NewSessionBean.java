@@ -30,7 +30,7 @@ public class NewSessionBean {
         this.count = count;
     }
     
-    @Interceptors(InterceptorClass.class)
+    //@Interceptors(InterceptorClass.class)
     public int incrementCount() {
         
         return count++;
